@@ -1,1 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioCuriosidades: Répteis</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
 
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #f0f4f8;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(45deg, #a8ff78, #78ffd6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #90a4ae;
+            font-size: 1.1rem;
+        }
+
+        /* Grid Ajustado */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            perspective: 1000px;
+        }
+
+        /* Estrutura do Card */
+        .card {
+            height: 350px;
+            cursor: pointer;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Ação de virar o card */
+        .card.virado .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 24px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Customização da Frente */
+        .card-front {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .icon-wrapper {
+            font-size: 4.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            width: 110px;
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-top: 20px;
+            box-shadow: inset 0 0 15px rgba(255,255,255,0.2);
+        }
+
+        .card-front h3 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .hint {
+            font-size: 0.8rem;
+            color: #00e676;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Customização do Verso */
+        .card-back {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            color: #052e16;
+            transform: rotateY(180deg);
+        }
+
+        .card-back h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+            padding-bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .card-back p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            text-align: center;
+            font-weight: 500;
+            margin: auto 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Mundo dos Répteis</h1>
+        <p>Clique nos cards para revelar segredos da natureza</p>
+    </header>
+
+    <main class="container">
+        <div class="card" onclick="virarCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="icon-wrapper">🦎</div>
+                    <h3>Camaleão</h3>
+                    <span class="hint">Clique para virar</span>
+                </div>
+                <div class="card-back">
+                    <h3>Olhar 360°</h3>
+                    <p>Os olhos do camaleão se movem de forma independente. Ele consegue olhar para a frente e para trás ao mesmo tempo para caçar e vigiar predadores!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" onclick="virarCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="icon-wrapper">🐢</div>
+                    <h3>Tartaruga-Marinha</h3>
+                    <span class="hint">Clique para virar</span>
+                </div>
+                <div class="card-back">
+                    <h3>Anciãs da Terra</h3>
+                    <p>Elas navegam pelos oceanos há mais de 100 milhões de anos. Elas testemunharam a extinção dos dinossauros e continuam aqui!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" onclick="virarCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="icon-wrapper">🐍</div>
+                    <h3>Cobra-Garter</h3>
+                    <span class="hint">Clique para virar</span>
+                </div>
+                <div class="card-back">
+                    <h3>Super Jejum</h3>
+                    <p>Graças a um metabolismo extremamente lento, algumas cobras conseguem sobreviver por até um ano inteiro sem ingerir uma única grama de alimento.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" onclick="virarCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="icon-wrapper">🐊</div>
+                    <h3>Jacaré</h3>
+                    <span class="hint">Clique para virar</span>
+                </div>
+                <div class="card-back">
+                    <h3>Fábrica de Dentes</h3>
+                    <p>Um jacaré pode perder e regenerar seus dentes continuamente. Ao longo da vida, eles chegam a trocar de dentes mais de 3.000 vezes!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function virarCard(card) {
+            card.classList.toggle('virado');
+        }
+    </script>
+</body>
+</html>
